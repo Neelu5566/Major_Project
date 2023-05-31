@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Whiteboard</title>
+  <style>
+    #canvas-container {
+      border: 1px solid #000;
+      margin: 20px auto;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3361a6;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="/quiz">Quiz</a></li>
+      <li><a href="/">Canvas</a></li>
+    </ul>
+  </nav>
+  <h1>Scribble</h1>
+  <div id="canvas-container">
+    <canvas id="canvas" width='1500' height="500"></canvas>
+  </div>
+  <button id="clearBtn">Clear</button>
+  <button id="saveBtn">Save Image</button>
+  <button id="solveBtn">Solve</button>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="radio" name="equation" value="single" id="single">
+    <label for="single">Single Equation</label><br>
+
+    <input type="radio" name="equation" value="multiple" id="multiple">
+    <label for="multiple">Multiple Equation</label><br>
+    <input type="file" name="image" />
+    <input type="submit" value="Predict" />
+
+  </form>
+
+
+  <img id="myImage" src="" alt="Image">
+
+  <p id="equation">equation</p>
+  <p id="result">result</p>
+  <p id="error">error</p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+  <script>
+    var imageElement = document.getElementById('myImage');
+    imageElement.style.display = 'none';
+
+    const canvas = new fabric.Canvas('canvas');
+    canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.width = 4;
+    canvas.backgroundColor = '#ffffff';
+
+    canvas.freeDrawingCursor = 'default';
+
+    const saveButton = document.getElementById('saveBtn');
+    saveButton.addEventListener('click', () => {
+
+      // Convert the canvas to a data URL with JPEG format and quality 0.8
+      const dataURL = canvas.toDataURL({
+        format: 'jpeg',
+        quality: 0.8
+      });
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/save';
+
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'dataURL';
+      input.value = dataURL;
+      form.appendChild(input);
+
+      document.body.appendChild(form);
+      form.submit();
+    });
+    const clearButton = document.getElementById('clearBtn');
+    clearButton.addEventListener('click', () => {
+      canvas.clear();
+      canvas.backgroundColor = '#ffffff'; // Set the canvas background color to white
+      canvas.renderAll(); // Render the changes on the canvas
+    });
+    const solveButton = document.getElementById('solveBtn');
+    solveButton.addEventListener('click', () => {
+
+      // Convert the canvas to a data URL with JPEG format and quality 0.8
+      const dataURL = canvas.toDataURL({
+        format: 'jpeg',
+        quality: 0.8
+      });
+
+      fetch('http://127.0.0.1:5000/solve', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          dataURL: dataURL
+
+        })
+      })
+        .then(response => response.json())
+        .then(result => {
+          var equationElement = document.getElementById('equation');
+          var resultElement = document.getElementById('result');
+          var errorElement = document.getElementById('error');
+
+
+
+
+
+          if (result.Error) {
+            equationElement.style.display = 'none';
+            resultElement.style.display = 'none';
+            errorElement.style.display = 'block';
+            errorElement.innerHTML = 'Error: ' + result.Error;
+            imageElement.style.display = 'none';
+            imageElement.src = '';
+          } else {
+            equationElement.style.display = 'block';
+            resultElement.style.display = 'block';
+            imageElement.style.display = 'block';
+            imageElement.src = result.Image;
+            errorElement.style.display = 'none';
+            equationElement.innerHTML = 'Your Equation: ' + result.Equation;
+            resultElement.innerHTML = 'Your Result: ' + result.Result;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+
+  </script>
+</body>
+
+</html>

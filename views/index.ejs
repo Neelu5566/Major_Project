@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON Data Display</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      font-size: 18px;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dddddd;
+      margin: 20px 0;
+    }
+
+    button[type="submit"] {
+      background-color: #4f46e5;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #382ecf;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="/quiz">Quiz</a></li>
+      <li><a href="/">Canvas</a></li>
+    </ul>
+  </nav>
+  
+
+  <h1>Quiz Form</h1>
+  <form action="/submit" method="post">
+    <label for="name">Student Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="rollNumber">Student ID:</label>
+    <input type="text" id="rollNumber" name="rollNumber" required>
+
+    <% if (!entries || entries.length===0) { %>
+      <p>No questions</p>
+      <% } else { %>
+        <% entries.forEach(function(entry, index) { %>
+          <p>Question <%= index + 1 %>:</p>
+          <img class="w-64 h-auto" src="<%= entry.image %>" alt="Question Image">
+          <h1>Enter Answer:</h1>
+          <input type="text" name="<%= entry.id %>" required>
+          <hr>
+          <% }) %>
+
+            <button type="submit">Submit</button>
+            <% } %>
+  </form>
+
+</body>
+
+</html>

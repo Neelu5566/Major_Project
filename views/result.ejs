@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Result</title>
+  <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f5f7fa;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4f46e5;
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
+  <!-- </head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/quiz">Quiz</a></li>
+      <li><a href="/">Canvas</a></li>
+    </ul>
+  </nav>
+  <div class="container mx-auto px-4">
+    <h1 class="text-3xl font-bold mt-8">Score: <%= score %></h1>
+  </div>
+</body>
+</html> -->
+
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="/quiz">Quiz</a></li>
+      <li><a href="/">Canvas</a></li>
+    </ul>
+  </nav>
+  <div class="container mx-auto px-4">
+    <h2>  Student Name : <%= name %>
+    </h2>
+    <h2>   Student ID : <%= rollNumber %>
+    </h2>
+    <h1 class="text-3xl font-bold mt-8">Score: <%= score %>
+    </h1>
+  </div>
+</body>
+
+</html>
