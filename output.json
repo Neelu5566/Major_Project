@@ -1,0 +1,50 @@
+[
+    {
+        "question": "x^3+2*x^2-5*x-6=0",
+        "image": "Extracted_Images/question1.jpg",
+        "answer": "-3, -1, 2",
+        "id": "a79f44da-fa50-4907-8461-ea9846b5f021"
+    },
+    {
+        "question": "2*x^3+3*x^2-11*x-6=0",
+        "image": "Extracted_Images/question2.jpg",
+        "answer": "-3, -1/2, 2",
+        "id": "5c413c4c-2886-4fc7-8e6f-efc4552d3840"
+    },
+    {
+        "question": "x^3+4*x^2-11*x-30=0",
+        "image": "Extracted_Images/question3.jpg",
+        "answer": "-5, -2, 3",
+        "id": "3e2f488e-810e-4e64-96e3-00dac603d5a2"
+    },
+    {
+        "question": "x^3-7*x^2+14*x-8=0",
+        "image": "Extracted_Images/question4.jpg",
+        "answer": "1, 2, 4",
+        "id": "9b28e188-7c8c-4d7c-9675-f95c772ed2dd"
+    },
+    {
+        "question": "2*x^3-9*x^2+7*x+6=0",
+        "image": "Extracted_Images/question5.jpg",
+        "answer": "-1/2, 2, 3",
+        "id": "763e0b7f-923c-4c1b-9595-3d40b40cde37"
+    },
+    {
+        "question": "4*x^3-15*x^2+8*x+3=0",
+        "image": "Extracted_Images/question6.jpg",
+        "answer": "-1/4, 1, 3",
+        "id": "21945123-ba21-4cf4-b223-f6347169122d"
+    },
+    {
+        "question": "x^4-10*x^3+35*x^2-50*x+24=0",
+        "image": "Extracted_Images/question7.jpg",
+        "answer": "1, 2, 3, 4",
+        "id": "8a72a787-d0ae-4caa-a232-83c8f6629b52"
+    },
+    {
+        "question": "6*x^3-19*x^2+11*x+6=0",
+        "image": "Extracted_Images/question8.jpg",
+        "answer": "-1/3, 3/2, 2",
+        "id": "cd9438da-dcab-4241-aee4-5b13533d3a97"
+    }
+]
