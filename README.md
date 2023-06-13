@@ -23,7 +23,7 @@ After that when you click on quiz button on the navigation bar from the above im
 
 ![Screenshot (70)](https://github.com/Neelu5566/Major_Project/assets/77778091/e4e3a590-c555-4d7f-b662-1164433932f3)
 
-If it shows like above then you have to upload a multiple equations image in canvas which is a button in navigation bar like below image.
+If it shows like above then you have to upload a multiple equations image in canvas(we are providing some images in Upload_Images folder)which is a button in navigation bar like below image.
 
 ![Screenshot (71)](https://github.com/Neelu5566/Major_Project/assets/77778091/211d26b9-3ad6-409d-87bd-8dc052496445)
 
