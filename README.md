@@ -12,7 +12,7 @@ Installation:
 1) Download this project and extract the folders and files. Open command prompt or terminal or vs code or whatever you use,
 2) Type "npm install", it will install all node independencies what are required for this project.
 3) Open another terminal or same terminal after the 2nd point completes, type "pip install requirements.txt", it will install all python packages which are used for this project.
-4) run "python api.py" in one terminal and "node app.js" in another terminal, both are running consequently in terminals. If any of these terminals are not working then the projevt is bot open in your desktop.
+4) run "python api.py" in one terminal and "node app.js" in another terminal, both are running consequently in terminals. If any of these terminals are not working then the project is not open in your desktop.
 
 Usage:
 It opens a localhost server in your web browser like the below picture but i am writing an equation in scribble whiteboard.
